@@ -6,7 +6,7 @@ This is a review of the Argo file formats (as per version 3.2 of the [Argo User'
 This format is for files containing _one or more_ profiles from a single cycle of a single Argo float. They contain only the standard CTD parameters (pressure, temperature, salinity, conductivity). Additional parameters measured during the same cycle are stored in separate "B-Argo" files.
 
 ### Structure
-All parameters included in a file are measured on the "same vertical sampling scheme and at the same location and time" (Argo manual, p19). This implies that all profiles in the file have the same number of vertical levels, though the exact pressure at a given level may differ from one profile to the next (as measured). The basic structure of the main CTD data and coordinate variables in the file is (dimension sizes are just examples):
+All parameters included in a file are measured on the "same vertical sampling scheme and at the same location and time" (Argo manual, p19). This implies that all profiles in the file have the same number of vertical levels, though the exact pressure (as measured) at a given level may differ from one profile to the next. The basic structure of the main CTD data and coordinate variables in the file is (dimension sizes are just examples):
 
 ```
 dimensions:
@@ -22,7 +22,7 @@ variables:
     float PSAL(N_PROF, N_LEVELS) ;
 ```
 
-For each data of the CTD parameters (`PRES`, `TEMP`, `PSAL`, `CNDC`) there are additional variables with the same dimensions giving QC flags and calibrated values, e.g.
+For each of the CTD parameters (`PRES`, `TEMP`, `PSAL`, `CNDC`), QC flags and calibrated values are stored in corresponding variables with the same dimensions, e.g.
 
 ```
     char TEMP_QC(N_PROF, N_LEVELS) ;
