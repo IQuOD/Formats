@@ -25,31 +25,12 @@ It may be helpful to define two variants for IQuOD:
 
 
 # Questions
-
-### Is a single-profile format actually useful?
-This would be the simplest to write and read, but would really hold just one single profile on a single set of pressure levels. This is *less than some core-Argo files* (which can hold multiple profiles from a single cycle)!
-
-### TEMP vs TEMP_ADJUSTED
-Would Argo data users find it hard to adopt the IQuOD format if we redefine the variable **TEMP** to mean the calibrated or best availabe value of temperature, instead of the raw value?
-
-### Is there a need for a separate "B" format?
-
-In Argo, the B format is used for separate files that contain all parameters other than temperature, conductivity, and salinity. The IQuOD requirement is to carry through all these additional variables, which we could do by replicating the Argo B format. The only content of these files that will be affected by IQuOD procedures (at least in the near future) is the pressure variable and the intelligent metadata. (Is that right?)
-
-The question is, for the IQuOD products, does it make sense to create a whole separate collection of these B files just to contain data that is not the primary product of IQuOD?
-
-The alternative would be to include _all_ parameters ("core" and "B") in the same multi-profile files.
-
-
-### How to stucture aggregated files?
-The "natural" way to store measured values from multiple profiles is in a two-dimensional array, with a profile index, and a pressure/level index, as is done in the [core-Argo format](https://github.com/IQuOD/Formats/blob/master/ArgoFormatsComments.md#structure). In the general case where profiles have different numbers of levels, the CF conventions call this [incomplete multidimensional array representation](http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_incomplete_multidimensional_array_representation). It is simple to read data from such files, but they can be large and contain lots of fill values (because their size is set by the profile with the maximum number of levels). The extra space taken up by the fill values is largely eliminated when the file is compressed, though this comes at the cost slightly increased access time.
-
-The alternative is the [contiguous ragged array representation](http://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_contiguous_ragged_array_representation), which packs all the profiles "end-to-end" into a single dimension, removing the need for fill values. Reading values from this structure is slightly more complex because of the need to keep track of the length of each profile.
-
-### Which NetCDF version and options to use?
-Should IQuOD products be stored in NetCDF3 or NetCDF4 files? If the latter, should we use optional features such as chunking and compression to reduce the file sizes? These features would be most useful for mutli-profile files with a simple multi-dimensional structure, leading to many fill values. They are less relevant for ragged-array files.
-
-For a single-profile format, we may as well use NetCDF3 for maximum complatibility.
+Please discuss these on the [issues](https://github.com/IQuOD/Formats/issues) pages.
+* [Is a single-profile format actually useful?](https://github.com/IQuOD/Formats/issues/1)
+* [TEMP vs TEMP_ADJUSTED](https://github.com/IQuOD/Formats/issues/2)
+* [Is there a need for a separate "B" format?](https://github.com/IQuOD/Formats/issues/3)
+* [How to stucture aggregated files?](https://github.com/IQuOD/Formats/issues/4)
+* [Which NetCDF version and options to use?](https://github.com/IQuOD/Formats/issues/5)
 
 
 # Recommendations
