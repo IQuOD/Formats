@@ -9,3 +9,6 @@ The repository has been set up to contain ideas and development of code to creat
 
 * [ArgoFormatsComments.md](ArgoFormatsComments.md): general notes and comments on the Argo format;
 * [IQuOD_Formats.md](IQuOD_Formats.md): requirements and recommendations for the IQuOD formats.
+
+## 5th IQuOD meeting
+A summary of Formats Task Team activities was given at the 5th meeting in Oostende, Belgium. Slides [here](https://docs.google.com/presentation/d/1qvrFlf_M07iQg9VCxcD3LjSVYJtIdBzY-AJcMU-g74E/edit?usp=sharing).
